@@ -1,6 +1,14 @@
 {
   "incidents": [
     {
+      "id": "INC-1112",
+      "service": "payments-api",
+      "severity": "Sev2",
+      "status": "Open",
+      "scenario": "mixed",
+      "createdAt": "2026-02-14T17:52:02.498Z"
+    },
+    {
       "id": "INC-1111",
       "service": "payments-api",
       "severity": "Sev2",
@@ -5221,6 +5229,48 @@
         "ts": "2026-02-14T08:09:00Z",
         "errors": 1
       }
+    ],
+    "INC-1112": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
     ]
   },
   "clusters": {
@@ -8629,6 +8679,56 @@
       }
     ],
     "INC-1111": [
+      {
+        "clusterId": "CL-1",
+        "count": 14,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout expired sqlexception execution connection pool",
+        "sample": "SqlException: Execution Timeout Expired."
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 12,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized jwt expired 401 invalid token",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 5,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit 429 too many requests",
+        "sample": "429 Too Many Requests: rate limit exceeded"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 4,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "quota exceeded on dependency service",
+        "sample": "Quota exceeded on dependency service"
+      },
+      {
+        "clusterId": "CL-5",
+        "count": 2,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      },
+      {
+        "clusterId": "CL-6",
+        "count": 2,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      }
+    ],
+    "INC-1112": [
       {
         "clusterId": "CL-1",
         "count": 14,

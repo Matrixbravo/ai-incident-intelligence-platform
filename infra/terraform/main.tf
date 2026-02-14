@@ -1,4 +1,11 @@
 terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"
+    storage_account_name = "aiincidenttfstate01"
+    container_name       = "tfstate"
+    key                  = "ai-incident-intel.tfstate"
+  }
+
   required_version = ">= 1.5.0"
   required_providers {
     azurerm = {

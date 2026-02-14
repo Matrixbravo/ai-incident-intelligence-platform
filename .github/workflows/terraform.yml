@@ -14,6 +14,8 @@ on:
 jobs:
   apply:
     runs-on: ubuntu-latest
+    env:
+      ARM_ACCESS_KEY: ${{ secrets.TFSTATE_STORAGE_KEY }}
     defaults:
       run:
         working-directory: infra/terraform
@@ -36,7 +38,5 @@ jobs:
 
       - name: Terraform Apply (placeholder image)
         env:
-          TF_VAR_static_web_repo_url: ${{ secrets.TF_VAR_static_web_repo_url }}
-          TF_VAR_static_web_branch: ${{ secrets.TF_VAR_static_web_branch }}
           TF_VAR_container_image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
         run: terraform apply -auto-approve -input=false

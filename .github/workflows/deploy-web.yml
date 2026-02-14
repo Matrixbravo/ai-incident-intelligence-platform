@@ -6,7 +6,7 @@ permissions:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
       - "apps/web/**"
   workflow_dispatch:
@@ -18,13 +18,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: azure/login@v2
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Get SWA token + API URL from Terraform outputs
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Read outputs (requires state; see note below)
         id: tf
         run: |
           cd infra/terraform
@@ -34,14 +38,26 @@ jobs:
           echo "swa_token=$SWA_TOKEN" >> $GITHUB_OUTPUT
           echo "api_url=$API_URL" >> $GITHUB_OUTPUT
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install + Build (Vite)
+        working-directory: apps/web
+        env:
+          VITE_API_BASE: ${{ steps.tf.outputs.api_url }}
+        run: |
+          npm ci
+          npm run build
+
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ steps.tf.outputs.swa_token }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
+          action: upload
           app_location: "apps/web"
           output_location: "dist"
-        env:
-          VITE_API_BASE: ${{ steps.tf.outputs.api_url }}
-

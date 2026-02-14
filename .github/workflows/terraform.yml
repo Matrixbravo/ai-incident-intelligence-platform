@@ -6,7 +6,7 @@ permissions:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
       - "infra/terraform/**"
   workflow_dispatch:
@@ -21,20 +21,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: azure/login@v2
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -input=false
 
-      - name: Terraform Apply (first run only needs a placeholder image)
+      - name: Terraform Apply (placeholder image)
         env:
           TF_VAR_static_web_repo_url: ${{ secrets.TF_VAR_static_web_repo_url }}
           TF_VAR_static_web_branch: ${{ secrets.TF_VAR_static_web_branch }}
           TF_VAR_container_image: "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -input=false

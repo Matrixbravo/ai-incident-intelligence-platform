@@ -1,0 +1,272 @@
+/* ===== LOCK APP TO VIEWPORT (no page scroll) ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+:root {
+  --bg: #0f0f10;
+  --panel: rgba(255,255,255,0.06);
+  --card: #ffffff;
+  --border: rgba(255,255,255,0.18);
+  --text: #eaeaea;
+  --muted: rgba(255,255,255,0.7);
+  --darkText: #111;
+  --radius: 14px;
+  --gap: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: radial-gradient(1200px 800px at 10% 10%, #2a2a2a 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* ===== APP ===== */
+.app {
+  height: 100%;
+  width: 100%;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.topbar { margin-bottom: 14px; }
+.topbar h2 { margin: 0; font-weight: 700; }
+
+/* ===== MAIN LAYOUT ===== */
+.layout {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+
+  /* IMPORTANT: minmax(0,1fr) prevents content-based shrinking */
+  grid-template-columns: 340px minmax(0, 1fr);
+
+  gap: var(--gap);
+  overflow: hidden;
+}
+
+/* ===== LEFT PANEL ===== */
+.panel {
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 14px;
+  overflow: hidden;
+}
+
+.panel__header { display: grid; gap: 10px; }
+.panel__title { font-weight: 700; opacity: 0.95; }
+
+.panel__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.panel__list::-webkit-scrollbar { width: 10px; }
+.panel__list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.18);
+  border-radius: 10px;
+}
+.panel__list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn--primary { background: rgba(255,255,255,0.10); font-weight: 650; }
+.btn--chip { padding: 7px 8px; border-radius: 12px; font-size: 12px; }
+
+.scenarioRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* ===== INPUT ===== */
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  outline: none;
+}
+.input::placeholder { color: rgba(255,255,255,0.55); }
+
+/* ===== INCIDENT CARD ===== */
+.incident {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  padding: 12px;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.incident:hover { background: rgba(255,255,255,0.08); }
+.incident--active {
+  border: 1px solid rgba(255,255,255,0.40);
+  background: rgba(255,255,255,0.10);
+}
+.incident__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.incident__id { font-weight: 800; letter-spacing: 0.3px; }
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.22);
+  opacity: 0.9;
+}
+.incident__meta { margin-top: 6px; font-size: 13px; opacity: 0.9; }
+.mutedRow { display: flex; align-items: center; gap: 8px; opacity: 0.7; }
+.dot { opacity: 0.7; }
+.cap { text-transform: capitalize; }
+
+/* =========================================================
+   RIGHT DASHBOARD 2x2 — ALWAYS FULL WIDTH/HEIGHT (KEY FIX)
+========================================================= */
+.grid2x2 {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+
+  align-content: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+}
+
+/* Make sure each grid cell stretches */
+.grid2x2 > * {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== CARD ===== */
+.card {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  background: var(--card);
+  color: var(--darkText);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  padding: 14px 14px 10px 14px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card__header {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ===== CHART: FILL CARD BODY ALWAYS ===== */
+.chart {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ===== CLUSTER DETAILS: SCROLL INSIDE ONLY ===== */
+.detailsScrollFill {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.detailsScrollFill::-webkit-scrollbar { width: 8px; }
+.detailsScrollFill::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.18);
+  border-radius: 8px;
+}
+.detailsScrollFill::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.04);
+}
+
+.detailCard {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.detailTop { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+.detailLine { margin-top: 6px; font-size: 13px; opacity: 0.9; }
+.muted { opacity: 0.65; font-size: 13px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  html, body, #root { overflow: auto; }
+
+  .layout {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+
+  .grid2x2 {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    overflow: visible;
+  }
+
+  .card { overflow: visible; height: auto; }
+  .card__body { overflow: visible; }
+  .detailsScrollFill { max-height: 420px; }
+}

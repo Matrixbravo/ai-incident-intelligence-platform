@@ -1,0 +1,51 @@
+name: deploy-api
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "apps/api/**"
+      - "apps/ml-worker/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+      - name: Get ACR info from Terraform outputs
+        id: tf
+        run: |
+          cd infra/terraform
+          terraform init -input=false
+          ACR_SERVER=$(terraform output -raw acr_login_server)
+          echo "acr_server=$ACR_SERVER" >> $GITHUB_OUTPUT
+
+      - name: Docker login to ACR
+        run: |
+          az acr login --name ${{ steps.tf.outputs.acr_server }}
+
+      - name: Build and push image
+        run: |
+          IMAGE="${{ steps.tf.outputs.acr_server }}/ai-incident-intel-api:${{ github.sha }}"
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+          docker build -t "$IMAGE" -f apps/api/Dockerfile apps/api
+          docker push "$IMAGE"
+
+      - name: Update Container App to new image
+        run: |
+          RG="ai-incident-intel-rg"
+          APP="ai-incident-intel-api"
+          az containerapp update \
+            --name "$APP" \
+            --resource-group "$RG" \
+            --image "$IMAGE"

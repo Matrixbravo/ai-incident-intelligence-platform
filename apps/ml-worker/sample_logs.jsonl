@@ -1,0 +1,59 @@
+{"ts":"2026-02-14T08:00:03Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+{"ts":"2026-02-14T08:00:11Z","service":"payments-api","message":"Timeout while connecting to SQL endpoint"}
+{"ts":"2026-02-14T08:01:05Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}
+{"ts":"2026-02-14T08:01:18Z","service":"payments-api","message":"Connection pool exhausted. Timeout expired."}
+{"ts":"2026-02-14T08:01:42Z","service":"payments-api","message":"401 Unauthorized: JWT expired"}
+{"ts":"2026-02-14T08:02:02Z","service":"payments-api","message":"Unauthorized: token expired for user abc"}
+{"ts":"2026-02-14T08:02:08Z","service":"payments-api","message":"Auth failed: invalid signature in JWT"}
+{"ts":"2026-02-14T08:02:16Z","service":"payments-api","message":"429 Too Many Requests: rate limit exceeded"}
+{"ts":"2026-02-14T08:02:22Z","service":"payments-api","message":"Throttled by downstream API due to quota limit"}
+{"ts":"2026-02-14T08:02:41Z","service":"payments-api","message":"Quota exceeded on dependency service"}
+
+{"ts":"2026-02-14T08:03:01Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}
+{"ts":"2026-02-14T08:03:04Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+{"ts":"2026-02-14T08:03:07Z","service":"payments-api","message":"Timeout while connecting to SQL endpoint"}
+{"ts":"2026-02-14T08:03:09Z","service":"payments-api","message":"Connection pool exhausted. Timeout expired."}
+{"ts":"2026-02-14T08:03:12Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}
+{"ts":"2026-02-14T08:03:15Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+{"ts":"2026-02-14T08:03:18Z","service":"payments-api","message":"401 Unauthorized: JWT expired"}
+{"ts":"2026-02-14T08:03:20Z","service":"payments-api","message":"Unauthorized: token expired for user abc"}
+{"ts":"2026-02-14T08:03:22Z","service":"payments-api","message":"401 Unauthorized: Bearer token invalid"}
+{"ts":"2026-02-14T08:03:24Z","service":"payments-api","message":"Auth failed: invalid signature in JWT"}
+{"ts":"2026-02-14T08:03:26Z","service":"payments-api","message":"429 Too Many Requests: rate limit exceeded"}
+{"ts":"2026-02-14T08:03:28Z","service":"payments-api","message":"Rate limit hit. Retry-After: 30"}
+{"ts":"2026-02-14T08:03:31Z","service":"payments-api","message":"Throttled by downstream API due to quota limit"}
+{"ts":"2026-02-14T08:03:34Z","service":"payments-api","message":"Quota exceeded on dependency service"}
+{"ts":"2026-02-14T08:03:37Z","service":"payments-api","message":"OutOfMemoryError: Java heap space"}
+{"ts":"2026-02-14T08:03:40Z","service":"payments-api","message":"Process killed (OOM) while handling request batch"}
+
+{"ts":"2026-02-14T08:04:02Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}
+{"ts":"2026-02-14T08:04:05Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+{"ts":"2026-02-14T08:04:08Z","service":"payments-api","message":"Connection pool exhausted. Timeout expired."}
+{"ts":"2026-02-14T08:04:11Z","service":"payments-api","message":"Timeout while connecting to SQL endpoint"}
+{"ts":"2026-02-14T08:04:14Z","service":"payments-api","message":"401 Unauthorized: JWT expired"}
+{"ts":"2026-02-14T08:04:17Z","service":"payments-api","message":"Unauthorized: token expired for user abc"}
+{"ts":"2026-02-14T08:04:20Z","service":"payments-api","message":"Auth failed: invalid signature in JWT"}
+{"ts":"2026-02-14T08:04:23Z","service":"payments-api","message":"429 Too Many Requests: rate limit exceeded"}
+{"ts":"2026-02-14T08:04:26Z","service":"payments-api","message":"Throttled by downstream API due to quota limit"}
+{"ts":"2026-02-14T08:04:29Z","service":"payments-api","message":"Rate limit hit. Retry-After: 30"}
+{"ts":"2026-02-14T08:04:33Z","service":"payments-api","message":"OutOfMemoryError: Java heap space"}
+
+{"ts":"2026-02-14T08:05:06Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}
+{"ts":"2026-02-14T08:05:12Z","service":"payments-api","message":"Connection pool exhausted. Timeout expired."}
+{"ts":"2026-02-14T08:05:18Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+{"ts":"2026-02-14T08:05:21Z","service":"payments-api","message":"429 Too Many Requests: rate limit exceeded"}
+{"ts":"2026-02-14T08:05:25Z","service":"payments-api","message":"Throttled by downstream API due to quota limit"}
+{"ts":"2026-02-14T08:05:33Z","service":"payments-api","message":"401 Unauthorized: JWT expired"}
+
+{"ts":"2026-02-14T08:06:02Z","service":"payments-api","message":"401 Unauthorized: JWT expired"}
+{"ts":"2026-02-14T08:06:10Z","service":"payments-api","message":"Unauthorized: token expired for user xyz"}
+{"ts":"2026-02-14T08:06:22Z","service":"payments-api","message":"429 Too Many Requests: rate limit exceeded"}
+{"ts":"2026-02-14T08:06:36Z","service":"payments-api","message":"Rate limit hit. Retry-After: 30"}
+
+{"ts":"2026-02-14T08:07:04Z","service":"payments-api","message":"Timeout while connecting to SQL endpoint"}
+{"ts":"2026-02-14T08:07:19Z","service":"payments-api","message":"SqlException: Execution Timeout Expired."}
+
+{"ts":"2026-02-14T08:08:15Z","service":"payments-api","message":"401 Unauthorized: Bearer token invalid"}
+{"ts":"2026-02-14T08:08:22Z","service":"payments-api","message":"Auth failed: invalid signature in JWT"}
+
+{"ts":"2026-02-14T08:09:40Z","service":"payments-api","message":"Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."}

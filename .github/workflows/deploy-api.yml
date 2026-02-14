@@ -16,6 +16,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    # ✅ Needed for terraform backend (remote state in Azure Storage)
+    env:
+      ARM_ACCESS_KEY: ${{ secrets.TFSTATE_STORAGE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +33,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Read outputs (requires state; see note below)
+      - name: Read ACR login server from Terraform outputs
         id: tf
         run: |
           cd infra/terraform
@@ -45,7 +49,7 @@ jobs:
         run: |
           IMAGE="${{ steps.tf.outputs.acr_server }}/ai-incident-intel-api:${{ github.sha }}"
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
-          docker build -t "$IMAGE" -f apps/api/Dockerfile apps/api
+          docker build -t "$IMAGE" -f apps/api/Dockerfile .
           docker push "$IMAGE"
 
       - name: Update Container App
@@ -53,4 +57,4 @@ jobs:
           az containerapp update \
             --name "ai-incident-intel-api" \
             --resource-group "ai-incident-intel-rg" \
-            --image "$IMAGE"
+            --image "${{ env.IMAGE }}"

@@ -1,6 +1,87 @@
 {
   "incidents": [
     {
+      "id": "INC-1121",
+      "service": "payments-api",
+      "severity": "Sev2",
+      "status": "Open",
+      "scenario": "mixed",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:52.964Z"
+    },
+    {
+      "id": "INC-1120",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "timeout",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:41.472Z"
+    },
+    {
+      "id": "INC-1119",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "auth",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:38.671Z"
+    },
+    {
+      "id": "INC-1118",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "throttle",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:34.030Z"
+    },
+    {
+      "id": "INC-1117",
+      "service": "payments-api",
+      "severity": "Sev2",
+      "status": "Open",
+      "scenario": "mixed",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:29.735Z"
+    },
+    {
+      "id": "INC-1116",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "throttle",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:27.165Z"
+    },
+    {
+      "id": "INC-1115",
+      "service": "payments-api",
+      "severity": "Sev2",
+      "status": "Open",
+      "scenario": "mixed",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:22.856Z"
+    },
+    {
+      "id": "INC-1114",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "auth",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:20.844Z"
+    },
+    {
+      "id": "INC-1113",
+      "service": "payments-api",
+      "severity": "Sev3",
+      "status": "Open",
+      "scenario": "timeout",
+      "engine": "fallback",
+      "createdAt": "2026-02-14T21:03:19.073Z"
+    },
+    {
       "id": "INC-1112",
       "service": "payments-api",
       "severity": "Sev2",
@@ -5271,6 +5352,384 @@
         "ts": "2026-02-14T08:09:00Z",
         "errors": 1
       }
+    ],
+    "INC-1113": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1114": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1115": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1116": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1117": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1118": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1119": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1120": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
+    ],
+    "INC-1121": [
+      {
+        "ts": "2026-02-14T08:00:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:01:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:02:00Z",
+        "errors": 6
+      },
+      {
+        "ts": "2026-02-14T08:03:00Z",
+        "errors": 9
+      },
+      {
+        "ts": "2026-02-14T08:04:00Z",
+        "errors": 7
+      },
+      {
+        "ts": "2026-02-14T08:05:00Z",
+        "errors": 4
+      },
+      {
+        "ts": "2026-02-14T08:06:00Z",
+        "errors": 3
+      },
+      {
+        "ts": "2026-02-14T08:07:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:08:00Z",
+        "errors": 2
+      },
+      {
+        "ts": "2026-02-14T08:09:00Z",
+        "errors": 1
+      }
     ]
   },
   "clusters": {
@@ -8776,6 +9235,472 @@
         "confidence": 0.7,
         "signature": "throttled by downstream api due to",
         "sample": "Throttled by downstream API due to quota limit"
+      }
+    ],
+    "INC-1113": [
+      {
+        "clusterId": "CL-1",
+        "count": 11,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "connection pool exhausted timeout expired",
+        "sample": "Connection pool exhausted. Timeout expired."
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 11,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "sqlexception execution timeout expired",
+        "sample": "SqlException: Execution Timeout Expired."
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 10,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout the expired period elapsed prior",
+        "sample": "Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 7,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      }
+    ],
+    "INC-1114": [
+      {
+        "clusterId": "CL-1",
+        "count": 13,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "auth failed invalid signature in jwt",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 12,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized bearer token invalid",
+        "sample": "401 Unauthorized: Bearer token invalid"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 8,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized jwt expired",
+        "sample": "401 Unauthorized: JWT expired"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 6,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized token expired for user abc",
+        "sample": "Unauthorized: token expired for user abc"
+      }
+    ],
+    "INC-1115": [
+      {
+        "clusterId": "CL-1",
+        "count": 10,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 6,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "auth failed invalid signature in jwt",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 3,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized jwt expired",
+        "sample": "401 Unauthorized: JWT expired"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 3,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized token expired for user abc",
+        "sample": "Unauthorized: token expired for user abc"
+      },
+      {
+        "clusterId": "CL-5",
+        "count": 3,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout the expired period elapsed prior",
+        "sample": "Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."
+      },
+      {
+        "clusterId": "CL-6",
+        "count": 3,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      },
+      {
+        "clusterId": "CL-7",
+        "count": 3,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "quota exceeded on dependency service",
+        "sample": "Quota exceeded on dependency service"
+      },
+      {
+        "clusterId": "CL-8",
+        "count": 3,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit hit retry-after 30",
+        "sample": "Rate limit hit. Retry-After: 30"
+      },
+      {
+        "clusterId": "CL-9",
+        "count": 2,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized bearer token invalid",
+        "sample": "401 Unauthorized: Bearer token invalid"
+      },
+      {
+        "clusterId": "CL-10",
+        "count": 2,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "connection pool exhausted timeout expired",
+        "sample": "Connection pool exhausted. Timeout expired."
+      }
+    ],
+    "INC-1116": [
+      {
+        "clusterId": "CL-1",
+        "count": 15,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "429 too many requests rate limit",
+        "sample": "429 Too Many Requests: rate limit exceeded"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 11,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "quota exceeded on dependency service",
+        "sample": "Quota exceeded on dependency service"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 7,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit hit retry-after 30",
+        "sample": "Rate limit hit. Retry-After: 30"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 6,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      }
+    ],
+    "INC-1117": [
+      {
+        "clusterId": "CL-1",
+        "count": 5,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "429 too many requests rate limit",
+        "sample": "429 Too Many Requests: rate limit exceeded"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 5,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "quota exceeded on dependency service",
+        "sample": "Quota exceeded on dependency service"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 4,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "auth failed invalid signature in jwt",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 4,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized token expired for user abc",
+        "sample": "Unauthorized: token expired for user abc"
+      },
+      {
+        "clusterId": "CL-5",
+        "count": 4,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit hit retry-after 30",
+        "sample": "Rate limit hit. Retry-After: 30"
+      },
+      {
+        "clusterId": "CL-6",
+        "count": 4,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      },
+      {
+        "clusterId": "CL-7",
+        "count": 3,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized bearer token invalid",
+        "sample": "401 Unauthorized: Bearer token invalid"
+      },
+      {
+        "clusterId": "CL-8",
+        "count": 3,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout the expired period elapsed prior",
+        "sample": "Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."
+      },
+      {
+        "clusterId": "CL-9",
+        "count": 2,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized jwt expired",
+        "sample": "401 Unauthorized: JWT expired"
+      },
+      {
+        "clusterId": "CL-10",
+        "count": 2,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "sqlexception execution timeout expired",
+        "sample": "SqlException: Execution Timeout Expired."
+      },
+      {
+        "clusterId": "CL-11",
+        "count": 2,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      }
+    ],
+    "INC-1118": [
+      {
+        "clusterId": "CL-1",
+        "count": 13,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "429 too many requests rate limit",
+        "sample": "429 Too Many Requests: rate limit exceeded"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 9,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "quota exceeded on dependency service",
+        "sample": "Quota exceeded on dependency service"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 9,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit hit retry-after 30",
+        "sample": "Rate limit hit. Retry-After: 30"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 8,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      }
+    ],
+    "INC-1119": [
+      {
+        "clusterId": "CL-1",
+        "count": 12,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized bearer token invalid",
+        "sample": "401 Unauthorized: Bearer token invalid"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 11,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized jwt expired",
+        "sample": "401 Unauthorized: JWT expired"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 8,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "auth failed invalid signature in jwt",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 8,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized token expired for user abc",
+        "sample": "Unauthorized: token expired for user abc"
+      }
+    ],
+    "INC-1120": [
+      {
+        "clusterId": "CL-1",
+        "count": 13,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 11,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "sqlexception execution timeout expired",
+        "sample": "SqlException: Execution Timeout Expired."
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 9,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout the expired period elapsed prior",
+        "sample": "Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 6,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "connection pool exhausted timeout expired",
+        "sample": "Connection pool exhausted. Timeout expired."
+      }
+    ],
+    "INC-1121": [
+      {
+        "clusterId": "CL-1",
+        "count": 6,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized jwt expired",
+        "sample": "401 Unauthorized: JWT expired"
+      },
+      {
+        "clusterId": "CL-2",
+        "count": 6,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "throttled by downstream api due to",
+        "sample": "Throttled by downstream API due to quota limit"
+      },
+      {
+        "clusterId": "CL-3",
+        "count": 4,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "401 unauthorized bearer token invalid",
+        "sample": "401 Unauthorized: Bearer token invalid"
+      },
+      {
+        "clusterId": "CL-4",
+        "count": 4,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "sqlexception execution timeout expired",
+        "sample": "SqlException: Execution Timeout Expired."
+      },
+      {
+        "clusterId": "CL-5",
+        "count": 3,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "auth failed invalid signature in jwt",
+        "sample": "Auth failed: invalid signature in JWT"
+      },
+      {
+        "clusterId": "CL-6",
+        "count": 3,
+        "category": "Auth/Token",
+        "confidence": 0.66,
+        "signature": "unauthorized token expired for user abc",
+        "sample": "Unauthorized: token expired for user abc"
+      },
+      {
+        "clusterId": "CL-7",
+        "count": 3,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "connection pool exhausted timeout expired",
+        "sample": "Connection pool exhausted. Timeout expired."
+      },
+      {
+        "clusterId": "CL-8",
+        "count": 3,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout the expired period elapsed prior",
+        "sample": "Timeout expired. The timeout period elapsed prior to obtaining a connection from the pool."
+      },
+      {
+        "clusterId": "CL-9",
+        "count": 2,
+        "category": "Dependency/DB Timeout",
+        "confidence": 0.78,
+        "signature": "timeout while connecting to sql endpoint",
+        "sample": "Timeout while connecting to SQL endpoint"
+      },
+      {
+        "clusterId": "CL-10",
+        "count": 2,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "429 too many requests rate limit",
+        "sample": "429 Too Many Requests: rate limit exceeded"
+      },
+      {
+        "clusterId": "CL-11",
+        "count": 2,
+        "category": "Throttling/Quota",
+        "confidence": 0.7,
+        "signature": "rate limit hit retry-after 30",
+        "sample": "Rate limit hit. Retry-After: 30"
       }
     ]
   }

@@ -96,12 +96,10 @@ resource "azurerm_container_app" "api" {
 
 resource "azurerm_static_web_app" "swa" {
   name                = local.swa_name
-  location            = "eastus2" # SWA regions are limited; eastus2 is common
+  location            = "eastus2"
   resource_group_name = azurerm_resource_group.rg.name
-
-  repository_url = var.static_web_repo_url
-  branch         = var.static_web_branch
 
   sku_tier = "Free"
   sku_size = "Free"
 }
+

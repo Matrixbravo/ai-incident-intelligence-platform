@@ -12,7 +12,7 @@ RUN npm ci --omit=dev
 COPY apps/api ./
 
 # ✅ Copy shared data into the container
-COPY apps/data ./data
+COPY apps/api/data ./data
 
 # ✅ Copy ML worker
 COPY apps/ml-worker ./ml-worker

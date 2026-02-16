@@ -26,7 +26,7 @@ RUN if [ -f ./ml-worker/requirements.txt ]; then \
       pip3 install --no-cache-dir -r ./ml-worker/requirements.txt ; \
     fi
 
-ENV PORT=4000
-EXPOSE 4000
+ENV PORT=80
+EXPOSE 80
 
 CMD ["node", "index.js"]

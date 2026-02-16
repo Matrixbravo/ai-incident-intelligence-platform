@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_BASE || "https://ai-incident-intel-api.ambitiousrock-91c84b52.canadacentral.azurecontainerapps.io";
+const API = import.meta.env.VITE_API_BASE || "https://ai-incident-intel-api.blueground-8ef93342.canadacentral.azurecontainerapps.io";
 
 export async function getIncidents() {
   const r = await fetch(`${API}/incidents`);

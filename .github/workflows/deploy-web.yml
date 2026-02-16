@@ -9,7 +9,7 @@ on:
     branches: ["main"]
     paths:
       - "apps/web/**"
-      - ".github/workflows/deploy-web.yml"
+      - "infra/terraform/**"
   workflow_dispatch:
 
 jobs:
@@ -29,16 +29,13 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Read outputs from Terraform
+      - name: Read SWA token from Terraform outputs
         id: tf
         run: |
           cd infra/terraform
           terraform init -input=false
           SWA_TOKEN=$(terraform output -raw static_web_api_key)
-          API_URL=$(terraform output -raw container_app_url)
-
           echo "swa_token=$SWA_TOKEN" >> $GITHUB_OUTPUT
-          echo "api_url=$API_URL" >> $GITHUB_OUTPUT
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -50,7 +47,7 @@ jobs:
       - name: Install + Build (Vite)
         working-directory: apps/web
         env:
-          VITE_API_BASE: ${{ steps.tf.outputs.api_url }}
+          VITE_API_BASE: ${{ vars.VITE_API_BASE }}
         run: |
           npm ci
           npm run build

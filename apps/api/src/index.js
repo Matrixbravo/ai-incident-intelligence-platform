@@ -7,37 +7,44 @@ const path = require("path");
 const app = express();
 
 /**
- * ✅ CORS (Azure SWA + Local)
- *
- * Set this in Azure Container App env:
+ * CORS_ORIGINS example:
  * CORS_ORIGINS="https://<YOUR-SWA>.azurestaticapps.net,http://localhost:5173"
  *
- * If not set, it will allow localhost:5173 only (safe default).
+ * If CORS_ORIGINS is NOT set -> default allows only http://localhost:5173 (safer).
  */
-const allowed = (process.env.CORS_ORIGINS || "")
+const allowedOrigins = (process.env.CORS_ORIGINS || "")
   .split(",")
-  .map(s => s.trim())
+  .map((s) => s.trim())
   .filter(Boolean);
 
-// allow calls from your SWA + local dev
-app.use(cors({
+const corsOptions = {
   origin: (origin, cb) => {
-    if (!origin) return cb(null, true);                 // curl/postman/no-origin
-    if (allowed.length === 0) return cb(null, true);    // if not set, allow all
-    if (allowed.includes(origin)) return cb(null, true);
+    // requests like curl/postman might have no Origin header
+    if (!origin) return cb(null, true);
+
+    // safer default: allow only localhost if env var not set
+    if (allowedOrigins.length === 0) {
+      return cb(null, origin === "http://localhost:5173");
+    }
+
+    if (allowedOrigins.includes(origin)) return cb(null, true);
     return cb(new Error(`CORS blocked for origin: ${origin}`));
   },
   methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
-}));
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false,
+};
 
-app.options("*", cors());
+app.use(cors(corsOptions));
+
+// ✅ FIX: do NOT use "*" here (it crashes). Use a RegExp catch-all.
+app.options(/.*/, cors(corsOptions));
 
 app.use(express.json());
 
 // --- sample.json resolution ---
 const dataPathCandidates = [
-  // Local dev: apps/api/../data/sample.json  (if you ever use that structure)
+  // Local dev: apps/api/../data/sample.json (if you have that structure)
   path.join(__dirname, "..", "data", "sample.json"),
   // Container: Dockerfile copies apps/api/data -> /app/data
   path.join(__dirname, "data", "sample.json"),
@@ -47,9 +54,7 @@ function resolveDataPath() {
   for (const p of dataPathCandidates) {
     if (fs.existsSync(p)) return p;
   }
-  throw new Error(
-    `sample.json not found. Tried: ${dataPathCandidates.join(" | ")}`
-  );
+  throw new Error(`sample.json not found. Tried: ${dataPathCandidates.join(" | ")}`);
 }
 
 const dataPath = resolveDataPath();
@@ -92,9 +97,8 @@ app.get("/incidents/:id/clusters", (req, res) => {
 
 // --- worker dir resolution ---
 const workerDirCandidates = [
-  // Local dev: apps/ml-worker relative to apps/api
+  // Local dev: apps/ml-worker relative to apps/api/src
   path.join(__dirname, "..", "ml-worker"),
-  // If running from apps/api/src sometimes
   path.join(__dirname, "..", "..", "ml-worker"),
   // Container: Dockerfile copies apps/ml-worker -> /app/ml-worker
   path.join(__dirname, "ml-worker"),
@@ -104,9 +108,7 @@ function resolveWorkerDir() {
   for (const p of workerDirCandidates) {
     if (fs.existsSync(path.join(p, "cluster.py"))) return p;
   }
-  throw new Error(
-    `cluster.py not found. Tried: ${workerDirCandidates.join(" | ")}`
-  );
+  throw new Error(`cluster.py not found. Tried: ${workerDirCandidates.join(" | ")}`);
 }
 
 app.post("/simulate-alert", (req, res) => {
@@ -129,7 +131,6 @@ app.post("/simulate-alert", (req, res) => {
 
     const seed = String(Date.now() % 100000);
 
-    // Linux container python
     const python = process.env.PYTHON_BIN || "python3";
     const workerDir = resolveWorkerDir();
 
@@ -138,9 +139,7 @@ app.post("/simulate-alert", (req, res) => {
       encoding: "utf-8",
     });
 
-    if (py.error) {
-      return res.status(500).json({ error: py.error.message });
-    }
+    if (py.error) return res.status(500).json({ error: py.error.message });
 
     if (py.status !== 0) {
       return res.status(500).json({

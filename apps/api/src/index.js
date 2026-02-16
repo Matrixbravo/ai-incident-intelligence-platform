@@ -14,27 +14,23 @@ const app = express();
  *
  * If not set, it will allow localhost:5173 only (safe default).
  */
-const corsOrigins = (process.env.CORS_ORIGINS || "http://localhost:5173")
+const allowed = (process.env.CORS_ORIGINS || "")
   .split(",")
-  .map((s) => s.trim())
+  .map(s => s.trim())
   .filter(Boolean);
 
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      // allow curl/postman (no Origin header)
-      if (!origin) return cb(null, true);
+// allow calls from your SWA + local dev
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true);                 // curl/postman/no-origin
+    if (allowed.length === 0) return cb(null, true);    // if not set, allow all
+    if (allowed.includes(origin)) return cb(null, true);
+    return cb(new Error(`CORS blocked for origin: ${origin}`));
+  },
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
 
-      if (corsOrigins.includes(origin)) return cb(null, true);
-
-      return cb(new Error("CORS blocked for origin: " + origin), false);
-    },
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-// ✅ required for browser preflight
 app.options("*", cors());
 
 app.use(express.json());

@@ -94,6 +94,11 @@ resource "azurerm_container_app" "api" {
         name  = "PORT"
         value = "4000"
       }
+
+      env {
+        name  = "CORS_ORIGINS"
+        value = "https://mango-wave-00902db0f.2.azurestaticapps.net"
+    }
     }
 
     min_replicas = 0

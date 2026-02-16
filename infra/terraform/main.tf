@@ -64,7 +64,7 @@ resource "azurerm_container_app" "api" {
 
   ingress {
     external_enabled = true
-    target_port      = 4000
+    target_port      = 80
     transport        = "auto"
     traffic_weight {
       latest_revision = true
@@ -92,7 +92,7 @@ resource "azurerm_container_app" "api" {
 
       env {
         name  = "PORT"
-        value = "4000"
+        value = "80"
       }
     }
 

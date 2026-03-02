@@ -1,34 +1,51 @@
 import { useState } from "react";
+import "./styles.css";
 
-export default function Login({ onLogin }) {
+export default function Login({ onSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState("");
+
+  // Demo creds (build-time env in Vite)
+  const VALID_USER = import.meta.env.VITE_LOGIN_USER || "admin";
+  const VALID_PASS = import.meta.env.VITE_LOGIN_PASS || "admin123";
 
   function handleSubmit(e) {
     e.preventDefault();
+    setErr("");
 
-    // Simple hardcoded demo credentials
-    if (username === "uday.singh03" && password === "17Dec!997") {
-      localStorage.setItem("ai_logged_in", "true");
-      onLogin();
-    } else {
-      alert("Invalid credentials. Please ping me on Teams.");
+    if (username.trim() === VALID_USER && password === VALID_PASS) {
+      onSuccess();
+      return;
     }
+    setErr("Invalid username or password.");
   }
 
   return (
     <div className="login-wrapper">
       <div className="login-card">
         <h2>AI Incident Intelligence Platform</h2>
-        <p>
-          To enter the home page, please ping me over Teams to get credentials.
-        </p>
+        <p>To enter the home page, please ping me over Teams to get credentials.</p>
 
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button onClick={onLogin}>Login</button>
+          {err && <div className="login-error">{err}</div>}
+
+          <button type="submit">Login</button>
+        </form>
       </div>
     </div>
   );
 }
+

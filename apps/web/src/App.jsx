@@ -7,7 +7,9 @@ import Login from "./Login";
 
 function toHHMM(iso) {
   if (!iso) return "";
-  const d = new Date(iso);
+  let fixed = iso;
+  if (fixed.endsWith("+00:00Z")) fixed = fixed.replace("+00:00Z", "Z");
+  const d = new Date(fixed);
   if (Number.isNaN(d.getTime())) return "??:??";
   return d.toISOString().slice(11, 16);
 }
@@ -22,7 +24,6 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
 
-  // Restore login from localStorage
   useEffect(() => {
     if (localStorage.getItem("ai_logged_in") === "true") {
       setIsLoggedIn(true);
@@ -37,12 +38,10 @@ export default function App() {
       setSelectedId(list[0].id);
       return list[0].id;
     }
-
     if (!selectedId && list[0]?.id) {
       setSelectedId(list[0].id);
       return list[0].id;
     }
-
     return selectedId || list[0]?.id || "";
   }
 
@@ -52,7 +51,6 @@ export default function App() {
       setClusters([]);
       return;
     }
-
     const [tr, cl] = await Promise.all([getTrends(id), getClusters(id)]);
     setTrends((tr || []).map((x) => ({ ...x, t: toHHMM(x.ts) })));
     setClusters(cl || []);
@@ -60,16 +58,18 @@ export default function App() {
 
   useEffect(() => {
     if (!isLoggedIn) return;
-
     (async () => {
       const id = await refreshIncidents(true);
       await refreshIncidentData(id);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
 
   useEffect(() => {
     if (!isLoggedIn) return;
-    refreshIncidentData(selectedId);
+    (async () => {
+      await refreshIncidentData(selectedId);
+    })();
   }, [selectedId, isLoggedIn]);
 
   async function handleSimulate(scenario) {
@@ -80,34 +80,34 @@ export default function App() {
       await refreshIncidentData(newestId);
     } catch (e) {
       console.error(e);
-      alert("Simulate failed.");
+      alert("Simulate failed. Check console (F12).");
     } finally {
       setLoading(false);
     }
   }
 
-  // ✅ SAFE conditional render AFTER hooks
+  function handleLoginSuccess() {
+    localStorage.setItem("ai_logged_in", "true");
+    setIsLoggedIn(true);
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("ai_logged_in");
+    setIsLoggedIn(false);
+  }
+
+  // ✅ IMPORTANT: render Login until logged in
   if (!isLoggedIn) {
-    return (
-      <Login
-        onLogin={() => {
-          localStorage.setItem("ai_logged_in", "true");
-          setIsLoggedIn(true);
-        }}
-      />
-    );
+    return <Login onSuccess={handleLoginSuccess} />;
   }
 
   return (
     <div className="app">
       <header className="topbar">
         <h2>AI Incident Intelligence Platform — MVP</h2>
-        <button 
-          className="logout-btn"
-          onClick={() => {
-          localStorage.removeItem("ai_logged_in");
-          setIsLoggedIn(false);
-        }}>Log Out</button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log out
+        </button>
       </header>
 
       <div className="layout">

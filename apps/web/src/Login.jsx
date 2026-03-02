@@ -17,31 +17,17 @@ export default function Login({ onLogin }) {
   }
 
   return (
-    <div style={{ display: "flex", height: "100vh", justifyContent: "center", alignItems: "center" }}>
-      <div style={{ width: 350 }}>
+    <div className="login-wrapper">
+      <div className="login-card">
         <h2>AI Incident Intelligence Platform</h2>
-        <p style={{ fontSize: 14 }}>
+        <p>
           To enter the home page, please ping me over Teams to get credentials.
         </p>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ width: "100%", marginBottom: 10, padding: 8 }}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", marginBottom: 10, padding: 8 }}
-          />
-          <button style={{ width: "100%", padding: 10 }}>
-            Login
-          </button>
-        </form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+
+        <button onClick={onLogin}>Login</button>
       </div>
     </div>
   );

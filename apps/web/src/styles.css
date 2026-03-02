@@ -1,5 +1,7 @@
 /* ===== LOCK APP TO VIEWPORT (no page scroll) ===== */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   overflow: hidden;
@@ -7,17 +9,19 @@ html, body, #root {
 
 :root {
   --bg: #0f0f10;
-  --panel: rgba(255,255,255,0.06);
+  --panel: rgba(255, 255, 255, 0.06);
   --card: #ffffff;
-  --border: rgba(255,255,255,0.18);
+  --border: rgba(255, 255, 255, 0.18);
   --text: #eaeaea;
-  --muted: rgba(255,255,255,0.7);
+  --muted: rgba(255, 255, 255, 0.7);
   --darkText: #111;
   --radius: 14px;
   --gap: 16px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   background: radial-gradient(1200px 800px at 10% 10%, #2a2a2a 0%, var(--bg) 60%);
@@ -35,8 +39,34 @@ body {
   min-height: 0;
 }
 
-.topbar { margin-bottom: 14px; }
-.topbar h2 { margin: 0; font-weight: 700; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  margin-bottom: 14px;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-weight: 700;
+}
+
+/*===== Logout ========*/
+.logout-btn {
+  background: #ff4d4d;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #e60000;
+}
 
 /* ===== MAIN LAYOUT ===== */
 .layout {
@@ -65,8 +95,15 @@ body {
   overflow: hidden;
 }
 
-.panel__header { display: grid; gap: 10px; }
-.panel__title { font-weight: 700; opacity: 0.95; }
+.panel__header {
+  display: grid;
+  gap: 10px;
+}
+
+.panel__title {
+  font-weight: 700;
+  opacity: 0.95;
+}
 
 .panel__list {
   flex: 1;
@@ -75,27 +112,101 @@ body {
   padding-right: 6px;
 }
 
-.panel__list::-webkit-scrollbar { width: 10px; }
+.panel__list::-webkit-scrollbar {
+  width: 10px;
+}
+
 .panel__list::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 10px;
 }
+
 .panel__list::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
+
+/* ========= Login Page ===== */
+
+.login-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* Card */
+.login-card {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  width: 360px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 16px;
+}
+
+.login-card p {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-card button:hover {
+  background: #1d4ed8;
+}
+
 
 /* ===== BUTTONS ===== */
 .btn {
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   border-radius: 12px;
   padding: 10px 12px;
   cursor: pointer;
 }
-.btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.btn--primary { background: rgba(255,255,255,0.10); font-weight: 650; }
-.btn--chip { padding: 7px 8px; border-radius: 12px; font-size: 12px; }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: rgba(255, 255, 255, 0.10);
+  font-weight: 650;
+}
+
+.btn--chip {
+  padding: 7px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
 
 .scenarioRow {
   display: grid;
@@ -108,43 +219,78 @@ body {
   width: 100%;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text);
   outline: none;
 }
-.input::placeholder { color: rgba(255,255,255,0.55); }
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
 
 /* ===== INCIDENT CARD ===== */
 .incident {
   width: 100%;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   padding: 12px;
   cursor: pointer;
   text-align: left;
   margin-bottom: 10px;
 }
-.incident:hover { background: rgba(255,255,255,0.08); }
-.incident--active {
-  border: 1px solid rgba(255,255,255,0.40);
-  background: rgba(255,255,255,0.10);
+
+.incident:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
-.incident__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.incident__id { font-weight: 800; letter-spacing: 0.3px; }
+
+.incident--active {
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.incident__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.incident__id {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
 .badge {
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.22);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   opacity: 0.9;
 }
-.incident__meta { margin-top: 6px; font-size: 13px; opacity: 0.9; }
-.mutedRow { display: flex; align-items: center; gap: 8px; opacity: 0.7; }
-.dot { opacity: 0.7; }
-.cap { text-transform: capitalize; }
+
+.incident__meta {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.mutedRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+}
+
+.dot {
+  opacity: 0.7;
+}
+
+.cap {
+  text-transform: capitalize;
+}
 
 /* =========================================================
    RIGHT DASHBOARD 2x2 — ALWAYS FULL WIDTH/HEIGHT (KEY FIX)
@@ -166,7 +312,7 @@ body {
 }
 
 /* Make sure each grid cell stretches */
-.grid2x2 > * {
+.grid2x2>* {
   min-width: 0;
   min-height: 0;
   width: 100%;
@@ -183,8 +329,8 @@ body {
   background: var(--card);
   color: var(--darkText);
   border-radius: var(--radius);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   padding: 14px 14px 10px 14px;
 
   display: flex;
@@ -229,30 +375,53 @@ body {
   padding-right: 6px;
 }
 
-.detailsScrollFill::-webkit-scrollbar { width: 8px; }
+.detailsScrollFill::-webkit-scrollbar {
+  width: 8px;
+}
+
 .detailsScrollFill::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.18);
+  background: rgba(0, 0, 0, 0.18);
   border-radius: 8px;
 }
+
 .detailsScrollFill::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .detailCard {
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 10px;
   background: #fff;
   margin-bottom: 10px;
 }
 
-.detailTop { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
-.detailLine { margin-top: 6px; font-size: 13px; opacity: 0.9; }
-.muted { opacity: 0.65; font-size: 13px; }
+.detailTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.detailLine {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.muted {
+  opacity: 0.65;
+  font-size: 13px;
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
-  html, body, #root { overflow: auto; }
+
+  html,
+  body,
+  #root {
+    overflow: auto;
+  }
 
   .layout {
     grid-template-columns: 1fr;
@@ -266,7 +435,16 @@ body {
     overflow: visible;
   }
 
-  .card { overflow: visible; height: auto; }
-  .card__body { overflow: visible; }
-  .detailsScrollFill { max-height: 420px; }
+  .card {
+    overflow: visible;
+    height: auto;
+  }
+
+  .card__body {
+    overflow: visible;
+  }
+
+  .detailsScrollFill {
+    max-height: 420px;
+  }
 }

@@ -102,7 +102,9 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <h2>AI Incident Intelligence Platform — MVP</h2>
-        <button onClick={() => {
+        <button 
+          className="logout-btn"
+          onClick={() => {
           localStorage.removeItem("ai_logged_in");
           setIsLoggedIn(false);
         }}>Log Out</button>

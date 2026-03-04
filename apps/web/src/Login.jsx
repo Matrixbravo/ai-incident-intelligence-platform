@@ -7,8 +7,8 @@ export default function Login({ onSuccess }) {
   const [err, setErr] = useState("");
 
   // Demo creds (build-time env in Vite)
-  const VALID_USER = import.meta.env.VITE_LOGIN_USER || "admin";
-  const VALID_PASS = import.meta.env.VITE_LOGIN_PASS || "admin123";
+  const VALID_USER = import.meta.env.VITE_LOGIN_USER || "uday.singh";
+  const VALID_PASS = import.meta.env.VITE_LOGIN_PASS || "17Dec!997";
 
   function handleSubmit(e) {
     e.preventDefault();
